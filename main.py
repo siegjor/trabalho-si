@@ -21,20 +21,25 @@ while not achou_objetivo:
     nodo_atual: Nodo = lista_abertos[0]
     novos_nodos: list = nodo_atual.gerar_filhos()
 
+    print(">>> Nodo pai:")
+    nodo_atual.print_estado()
+
     lista_visitados.append(nodo_atual)
     lista_abertos.remove(nodo_atual)
 
+    print("\n>>> Nodos filhos adicionados:")
     for nodo in novos_nodos:
-        if nodo not in lista_abertos:
+        if nodo not in lista_abertos and nodo not in lista_visitados:
             lista_abertos.append(nodo)
+            nodo.print_estado()
 
-    print("\nlista abertos:")
-    for nodo in lista_abertos:
-        print(nodo.estado)
+    # print("\nlista abertos:")
+    # for nodo in lista_abertos:
+    #     print(nodo.estado)
 
-    print("lista visitados:")
-    for nodo in lista_visitados:
-        print(nodo.estado)
+    # print("lista visitados:")
+    # for nodo in lista_visitados:
+    #     print(nodo.estado)
 
     achou_objetivo = nodo_atual.esta_completo()
 

@@ -22,25 +22,16 @@ class Nodo:
     def gerar_filhos(self):
         vazio_coords = self.gerar_coords_vazio()
 
-        print(">>> Nodo pai:")
-        self.print_estado(self.estado)
-
-        print("\n>>> Nodos filhos:")
-
-        if vazio_coords["x"] - 1 > 0:
-            print("> Moveu X para cima")
+        if vazio_coords["x"] - 1 >= 0:
             self.move_vazio_cima(vazio_coords)
 
         if vazio_coords["x"] + 1 <= 2:
-            print("> Moveu X para baixo")
             self.move_vazio_baixo(vazio_coords)
 
         if vazio_coords["y"] + 1 <= 2:
-            print("> Moveu X para direita")
             self.move_vazio_direita(vazio_coords)
 
-        if vazio_coords["y"] - 1 > 0:
-            print("> Moveu X para esquerda")
+        if vazio_coords["y"] - 1 >= 0:
             self.move_vazio_esquerda(vazio_coords)
 
         return self.filhos
@@ -50,7 +41,6 @@ class Nodo:
         novo_estado[vazio_coords["x"]][vazio_coords["y"]] = novo_estado[vazio_coords["x"] - 1][vazio_coords["y"]]
         novo_estado[vazio_coords["x"] - 1][vazio_coords["y"]] = "X"
 
-        self.print_estado(novo_estado)
         nodo_filho = Nodo(novo_estado, self)
         self.filhos.append(nodo_filho)
 
@@ -59,7 +49,6 @@ class Nodo:
         novo_estado[vazio_coords["x"]][vazio_coords["y"]] = novo_estado[vazio_coords["x"] + 1][vazio_coords["y"]]
         novo_estado[vazio_coords["x"] + 1][vazio_coords["y"]] = "X"
 
-        self.print_estado(novo_estado)
         nodo_filho = Nodo(novo_estado, self)
         self.filhos.append(nodo_filho)
 
@@ -68,7 +57,6 @@ class Nodo:
         novo_estado[vazio_coords["x"]][vazio_coords["y"]] = novo_estado[vazio_coords["x"]][vazio_coords["y"] - 1]
         novo_estado[vazio_coords["x"]][vazio_coords["y"] - 1] = "X"
 
-        self.print_estado(novo_estado)
         nodo_filho = Nodo(novo_estado, self)
         self.filhos.append(nodo_filho)
 
@@ -77,16 +65,16 @@ class Nodo:
         novo_estado[vazio_coords["x"]][vazio_coords["y"]] = novo_estado[vazio_coords["x"]][vazio_coords["y"] + 1]
         novo_estado[vazio_coords["x"]][vazio_coords["y"] + 1] = "X"
 
-        self.print_estado(novo_estado)
         nodo_filho = Nodo(novo_estado, self)
         self.filhos.append(nodo_filho)
 
     def esta_completo(self):
         return self.estado == [[1, 2, 3], [4, 5, 6], [7, 8, "X"]]
 
-    def print_estado(self, estado):
-        for i in estado:
-            print('\t'.join(map(str, i)))
+    def print_estado(self):
+        for i in self.estado:
+            print('  '.join(map(str, i)))
+        print()
 
     def __eq__(self, outro):
         return self.estado == outro.estado
