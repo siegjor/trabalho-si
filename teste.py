@@ -1,8 +1,6 @@
 from nodo import Nodo
 
-matriz1 = [["X", 2, 3],
-          [1, 4, 5],
-          [8, 7, 6]]
+matriz1 = [[1, 2, 3], [4, 5, 6], [7, 8, "X"]]
 
 nodo = Nodo(matriz1, None)
 
@@ -14,4 +12,6 @@ matriz1 = [[5, 2, 3],
 
 nodo2 = Nodo(matriz1, nodo)
 
-nodo2.gerar_filhos()
+
+esta_completo = [[1, 2, 3], [4, 5, 6], [7, 8, "X"]] == nodo.estado
+print(esta_completo)

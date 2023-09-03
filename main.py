@@ -16,7 +16,8 @@ nodo_origem = Nodo(matriz, None)
 lista_abertos.append(nodo_origem)
 
 # for i in range(4):
-while not nodo_origem.esta_completo(lista_abertos[0].estado):
+achou_objetivo = False
+while not achou_objetivo:
     nodo_atual: Nodo = lista_abertos[0]
     novos_nodos: list = nodo_atual.gerar_filhos()
 
@@ -24,16 +25,18 @@ while not nodo_origem.esta_completo(lista_abertos[0].estado):
     lista_abertos.remove(nodo_atual)
 
     for nodo in novos_nodos:
-        if nodo not in lista_abertos and nodo not in lista_visitados:
+        if nodo not in lista_abertos:
             lista_abertos.append(nodo)
 
-    # print("\nlista abertos:")
-    # for nodo in lista_abertos:
-    #     print(nodo.estado)
+    print("\nlista abertos:")
+    for nodo in lista_abertos:
+        print(nodo.estado)
 
-    # print("lista visitados:")
-    # for nodo in lista_visitados:
-    #     print(nodo.estado)
+    print("lista visitados:")
+    for nodo in lista_visitados:
+        print(nodo.estado)
+
+    achou_objetivo = nodo_atual.esta_completo()
 
 print("sucesso!")
 print(lista_abertos[0].estado)

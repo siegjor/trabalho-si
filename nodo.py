@@ -81,9 +81,12 @@ class Nodo:
         nodo_filho = Nodo(novo_estado, self)
         self.filhos.append(nodo_filho)
 
-    def esta_completo(self, estado):
-        return estado == [[1, 2, 3], [4, 5, 6], [7, 8, "X"]]
+    def esta_completo(self):
+        return self.estado == [[1, 2, 3], [4, 5, 6], [7, 8, "X"]]
 
     def print_estado(self, estado):
         for i in estado:
             print('\t'.join(map(str, i)))
+
+    def __eq__(self, outro):
+        return self.estado == outro.estado
