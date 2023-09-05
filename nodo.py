@@ -10,8 +10,8 @@ class Nodo:
         linha: list
         for linha in self.estado:
             if "X" in linha:
-                y = linha.index("X")
-                x = self.estado.index(linha)
+                x = linha.index("X")
+                y = self.estado.index(linha)
 
                 print("vazio X: " + str(x))
                 print("vazio Y: " + str(y))
@@ -23,49 +23,57 @@ class Nodo:
         vazio_coords = self.gerar_coords_vazio()
 
         if vazio_coords["x"] - 1 >= 0:
-            self.move_vazio_cima(vazio_coords)
+            print("Move esquerda")
+            self.move_vazio_esquerda(vazio_coords)
 
         if vazio_coords["x"] + 1 <= 2:
-            self.move_vazio_baixo(vazio_coords)
-
-        if vazio_coords["y"] + 1 <= 2:
+            print("Move direita")
             self.move_vazio_direita(vazio_coords)
 
+        if vazio_coords["y"] + 1 <= 2:
+            print("Move baixo")
+            self.move_vazio_baixo(vazio_coords)
+
         if vazio_coords["y"] - 1 >= 0:
-            self.move_vazio_esquerda(vazio_coords)
+            print("Move cima")
+            self.move_vazio_cima(vazio_coords)
 
         return self.filhos
 
     def move_vazio_cima(self, vazio_coords):
         novo_estado = copy.deepcopy(self.estado)
-        novo_estado[vazio_coords["x"]][vazio_coords["y"]] = novo_estado[vazio_coords["x"] - 1][vazio_coords["y"]]
-        novo_estado[vazio_coords["x"] - 1][vazio_coords["y"]] = "X"
+        novo_estado[vazio_coords["y"]][vazio_coords["x"]] = novo_estado[vazio_coords["y"] - 1][vazio_coords["x"]]
+        novo_estado[vazio_coords["y"] - 1][vazio_coords["x"]] = "X"
 
         nodo_filho = Nodo(novo_estado, self)
+        nodo_filho.print_estado()
         self.filhos.append(nodo_filho)
 
     def move_vazio_baixo(self, vazio_coords):
         novo_estado = copy.deepcopy(self.estado)
-        novo_estado[vazio_coords["x"]][vazio_coords["y"]] = novo_estado[vazio_coords["x"] + 1][vazio_coords["y"]]
-        novo_estado[vazio_coords["x"] + 1][vazio_coords["y"]] = "X"
+        novo_estado[vazio_coords["y"]][vazio_coords["x"]] = novo_estado[vazio_coords["y"] + 1][vazio_coords["x"]]
+        novo_estado[vazio_coords["y"] + 1][vazio_coords["x"]] = "X"
 
         nodo_filho = Nodo(novo_estado, self)
+        nodo_filho.print_estado()
         self.filhos.append(nodo_filho)
 
     def move_vazio_esquerda(self, vazio_coords):
         novo_estado = copy.deepcopy(self.estado)
-        novo_estado[vazio_coords["x"]][vazio_coords["y"]] = novo_estado[vazio_coords["x"]][vazio_coords["y"] - 1]
-        novo_estado[vazio_coords["x"]][vazio_coords["y"] - 1] = "X"
+        novo_estado[vazio_coords["y"]][vazio_coords["x"]] = novo_estado[vazio_coords["y"]][vazio_coords["x"] - 1]
+        novo_estado[vazio_coords["y"]][vazio_coords["x"] - 1] = "X"
 
         nodo_filho = Nodo(novo_estado, self)
+        nodo_filho.print_estado()
         self.filhos.append(nodo_filho)
 
     def move_vazio_direita(self, vazio_coords):
         novo_estado = copy.deepcopy(self.estado)
-        novo_estado[vazio_coords["x"]][vazio_coords["y"]] = novo_estado[vazio_coords["x"]][vazio_coords["y"] + 1]
-        novo_estado[vazio_coords["x"]][vazio_coords["y"] + 1] = "X"
+        novo_estado[vazio_coords["y"]][vazio_coords["x"]] = novo_estado[vazio_coords["y"]][vazio_coords["x"] + 1]
+        novo_estado[vazio_coords["y"]][vazio_coords["x"] + 1] = "X"
 
         nodo_filho = Nodo(novo_estado, self)
+        nodo_filho.print_estado()
         self.filhos.append(nodo_filho)
 
     def esta_completo(self):
