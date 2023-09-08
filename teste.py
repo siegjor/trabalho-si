@@ -1,17 +1,49 @@
-from nodo import Nodo
+from heuristicas import Heuristicas
 
-matriz1 = [[1, 2, 3], [4, 5, 6], [7, 8, "X"]]
+def solvable(tiles):
+    """
+    Check whether a 3x3 sliding puzzle is solvable.
 
-nodo = Nodo(matriz1, None)
+    Checks the number of "inversions". If this is odd then the puzzle configuration is not solvable.
 
-nodo.gerar_filhos()
+    An inversion is when two tiles are in the wrong order.
 
-matriz1 = [[5, 2, 3],
-           [1, 4, "X"],
-           [8, 7, 6]]
+    For example, the sequence 1, 3, 4, 7, 0, 2, 5, 8, 6 has six inversions:
 
-nodo2 = Nodo(matriz1, nodo)
+    3 > 2
+    4 > 2
+    7 > 2
+    7 > 5
+    7 > 6
+    8 > 6
+
+    The empty tile is ignored.
+    """
+    count = 0
+
+    for i in range(8):
+        for j in range(i+1, 9):
+            if tiles[j] and tiles[i] and tiles[i] > tiles[j]:
+                count += 1
+
+    return count % 2 == 0
 
 
-esta_completo = [[1, 2, 3], [4, 5, 6], [7, 8, "X"]] == nodo.estado
-print(esta_completo)
+# matriz = [[1, 8, 2],
+#           ["X", 4, 3],
+#           [7, 6, 5]]
+matriz = [[2, 1, 8],
+          [6, 4, 5],
+          ["X", 3, 7]]
+
+# matriz = [["X", 2, 4],
+#           [8, 5, 3],
+#           [1, 7, 6]]
+
+#           [1, 2, 3]
+#           [4, 5, 6]
+#           [7, 8, 0]
+
+heuristicas = Heuristicas()
+conflitos = heuristicas.calcular_conflitos_lineares(matriz) / 2
+print(conflitos)
