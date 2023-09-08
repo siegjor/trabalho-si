@@ -1,43 +1,20 @@
 from nodo import Nodo
 import time
 from lista_ordenada import ListaOrdenada
-from utils import tem_solucao
-
-# Tem solução
-# matriz = [[1, 8, 2],
-#           ["X", 4, 3],
-#           [7, 6, 5]]
-# matriz = [[5, 2, 8],
-#           [4, 1, 7],
-#           ["X", 3, 6]]
-
-# matriz = [[2, "X", 8],
-#           [6, 4, 5],
-#           [3, 1, 7]]
-
-matriz = [[4, "X", 6],
-          [7, 2, 3],
-          [1, 8, 5]]
-
-# matriz = [[1, 2, 3],
-#           [5, "X", 6],
-#           [4, 7, 8]]
+from utils import *
+from interface import Interface
 
 
-# Não tem solução
-# matriz = [[8, 1, 2],
-#           ["X", 4, 3],
-#           [7, 6, 5]]
-# matriz = [[1, 2, 3],
-#           [4, 5, 6],
-#           ["X", 8, 7]]
-# matriz = [["X", 2, 4],
-#           [8, 5, 3],
-#           [1, 6, 7]]
+interface = Interface()
 
-# [[(0, 0), (1, 0), (2, 0)],
-#  [(0, 1), (1, 1), (2, 1)],
-#  [(0, 2), (1, 2), (2, 2)]]
+while True:
+    lista_numeros_entrada = interface.receber_entrada()
+    if not tem_solucao(lista_numeros_entrada):
+        print("A configuração fornecida não tem solução! Por favor, insira outra.")
+    else:
+        break
+
+matriz = transformar_lista_em_matriz(lista_numeros_entrada)
 
 tempo_inicial = time.time()
 
@@ -49,10 +26,6 @@ lista_abertos.inserir(nodo_origem)
 
 achou_objetivo = False
 while not achou_objetivo:
-    if not tem_solucao(matriz):
-        print("A configuração fornecida não tem solução!")
-        break
-
     nodo_atual: Nodo = lista_abertos.primeiro()
 
     print("\n>>> Nodo pai:")
@@ -72,22 +45,48 @@ while not achou_objetivo:
     achou_objetivo = nodo_atual.esta_completo()
     if achou_objetivo == True:
         tempo_final = time.time()
-        print("Sucesso!")
-        print(nodo_atual.estado)
+        interface.print_resultados(nodo_atual, lista_visitados, lista_abertos, tempo_inicial, tempo_final)
 
-        print("Caminho (seq. de movimentos): ")
-        print(nodo_atual.get_sequencia_de_movimentos())
 
-        print("Total de nodos visitados: " + str(len(lista_visitados)))
-        print("Tempo decorrido: " + str(tempo_final - tempo_inicial) + " segundos")
-        print("Tamanho do caminho (profundidade): " +
-              str(nodo_atual.profundidade))
+# Tem solução
+# matriz = [[1, 8, 2],
+#           ["X", 4, 3],
+#           [7, 6, 5]]
+# Entrada: 1 8 2 X 4 3 7 6 5
 
-        # print("\nlista abertos:")
-        # lista_abertos_custos = list(
-        # map(lambda x: x.custo_total, lista_abertos.lista))
-        # print(lista_abertos_custos)
+# matriz = [[5, 2, 8],
+#           [4, 1, 7],
+#           ["X", 3, 6]]
+# Entrada: 5 2 8 4 1 7 X 3 6
 
-        # print("lista visitados:")
-        # for nodo in lista_visitados:
-        #     print(nodo.estado)
+# matriz = [[2, "X", 8],
+#           [6, 4, 5],
+#           [3, 1, 7]]
+# Entrada: 2 X 8 6 4 5 3 1 7
+
+# matriz = [[4, "X", 6],
+#           [7, 2, 3],
+#           [1, 8, 5]]
+# Entrada: 4 X 6 7 2 3 1 8 5
+
+# matriz = [[1, 2, 3],
+#           [5, "X", 6],
+#           [4, 7, 8]]
+# Entrada: 1 2 3 5 X 6 4 7 8
+
+
+# Não tem solução
+# matriz = [[8, 1, 2],
+#           ["X", 4, 3],
+#           [7, 6, 5]]
+# Entrada: 8 1 2 X 4 3 7 6 5
+
+# matriz = [[1, 2, 3],
+#           [4, 5, 6],
+#           ["X", 8, 7]]
+# Entrada: 1 2 3 4 5 6 X 8 7
+
+# matriz = [["X", 2, 4],
+#           [8, 5, 3],
+#           [1, 6, 7]]
+# Entrada: X 2 3 8 5 3 1 6 7

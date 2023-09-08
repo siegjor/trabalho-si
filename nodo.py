@@ -2,6 +2,7 @@ import copy
 from algoritmos_enum import AlgoritmosEnum
 from heuristicas import Heuristicas
 
+
 class Nodo:
     __algoritmo = AlgoritmosEnum.HEURISTICA_PRECISA
     # __algoritmo = AlgoritmosEnum.HEURISTICA_SIMPLES
@@ -62,7 +63,8 @@ class Nodo:
 
     def __move_vazio_cima(self, vazio_coords):
         novo_estado = copy.deepcopy(self.estado)
-        novo_estado[vazio_coords["y"]][vazio_coords["x"]] = novo_estado[vazio_coords["y"] - 1][vazio_coords["x"]]
+        novo_estado[vazio_coords["y"]][vazio_coords["x"]
+                                       ] = novo_estado[vazio_coords["y"] - 1][vazio_coords["x"]]
         novo_estado[vazio_coords["y"] - 1][vazio_coords["x"]] = "X"
 
         nodo_filho = Nodo(novo_estado, self)
@@ -72,7 +74,8 @@ class Nodo:
 
     def __move_vazio_baixo(self, vazio_coords):
         novo_estado = copy.deepcopy(self.estado)
-        novo_estado[vazio_coords["y"]][vazio_coords["x"]] = novo_estado[vazio_coords["y"] + 1][vazio_coords["x"]]
+        novo_estado[vazio_coords["y"]][vazio_coords["x"]
+                                       ] = novo_estado[vazio_coords["y"] + 1][vazio_coords["x"]]
         novo_estado[vazio_coords["y"] + 1][vazio_coords["x"]] = "X"
 
         nodo_filho = Nodo(novo_estado, self)
@@ -82,7 +85,8 @@ class Nodo:
 
     def __move_vazio_esquerda(self, vazio_coords):
         novo_estado = copy.deepcopy(self.estado)
-        novo_estado[vazio_coords["y"]][vazio_coords["x"]] = novo_estado[vazio_coords["y"]][vazio_coords["x"] - 1]
+        novo_estado[vazio_coords["y"]][vazio_coords["x"]
+                                       ] = novo_estado[vazio_coords["y"]][vazio_coords["x"] - 1]
         novo_estado[vazio_coords["y"]][vazio_coords["x"] - 1] = "X"
 
         nodo_filho = Nodo(novo_estado, self)
@@ -92,7 +96,8 @@ class Nodo:
 
     def __move_vazio_direita(self, vazio_coords):
         novo_estado = copy.deepcopy(self.estado)
-        novo_estado[vazio_coords["y"]][vazio_coords["x"]] = novo_estado[vazio_coords["y"]][vazio_coords["x"] + 1]
+        novo_estado[vazio_coords["y"]][vazio_coords["x"]
+                                       ] = novo_estado[vazio_coords["y"]][vazio_coords["x"] + 1]
         novo_estado[vazio_coords["y"]][vazio_coords["x"] + 1] = "X"
 
         nodo_filho = Nodo(novo_estado, self)
