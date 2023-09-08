@@ -2,7 +2,10 @@ def tem_solucao(matriz):
     matriz_em_uma_linha = []
     for lista in matriz:
         for numero in lista:
-            matriz_em_uma_linha.append(numero)
+            if (numero == "X"):
+                matriz_em_uma_linha.append(0)
+            else:
+                matriz_em_uma_linha.append(numero)
 
     contador = 0
     for i in range(8):
