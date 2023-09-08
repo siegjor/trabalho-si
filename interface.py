@@ -2,7 +2,7 @@ from nodo import Nodo
 
 class Interface:
     def receber_entrada(self):
-        print("Insira os números da matriz separados por espaço. Considere o '0' como sendo a posição vazia.")
+        print("Insira os números da matriz separados por espaço. Insira 'X' para representar a posição vazia.")
         string_entrada = input()
         lista_numeros = string_entrada.split()
 
