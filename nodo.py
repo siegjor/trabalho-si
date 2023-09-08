@@ -14,6 +14,7 @@ class Nodo:
         self.profundidade = 0
         self.heuristica = 0
         self.custo_total = 0
+        self.ultimo_movimento = ""
 
     def __gerar_coords_vazio(self):
         linha: list
@@ -65,6 +66,8 @@ class Nodo:
         novo_estado[vazio_coords["y"] - 1][vazio_coords["x"]] = "X"
 
         nodo_filho = Nodo(novo_estado, self)
+        nodo_filho.ultimo_movimento = "cima"
+
         self.filhos.append(nodo_filho)
 
     def __move_vazio_baixo(self, vazio_coords):
@@ -73,6 +76,8 @@ class Nodo:
         novo_estado[vazio_coords["y"] + 1][vazio_coords["x"]] = "X"
 
         nodo_filho = Nodo(novo_estado, self)
+        nodo_filho.ultimo_movimento = "baixo"
+
         self.filhos.append(nodo_filho)
 
     def __move_vazio_esquerda(self, vazio_coords):
@@ -81,6 +86,8 @@ class Nodo:
         novo_estado[vazio_coords["y"]][vazio_coords["x"] - 1] = "X"
 
         nodo_filho = Nodo(novo_estado, self)
+        nodo_filho.ultimo_movimento = "esquerda"
+
         self.filhos.append(nodo_filho)
 
     def __move_vazio_direita(self, vazio_coords):
@@ -89,6 +96,8 @@ class Nodo:
         novo_estado[vazio_coords["y"]][vazio_coords["x"] + 1] = "X"
 
         nodo_filho = Nodo(novo_estado, self)
+        nodo_filho.ultimo_movimento = "direita"
+
         self.filhos.append(nodo_filho)
 
     def esta_completo(self):
@@ -104,5 +113,17 @@ class Nodo:
             print('  '.join(map(str, i)))
         print()
 
+    def get_sequencia_de_movimentos(self):
+        nodo_temp: Nodo = self
+        lista_movimentos = []
+        while nodo_temp.pai != None:
+            lista_movimentos.append(nodo_temp.ultimo_movimento)
+            nodo_temp = nodo_temp.pai
+        lista_movimentos.reverse()
+
+        return lista_movimentos
+
     def __eq__(self, outro):
+        if (outro == None):
+            return False
         return self.estado == outro.estado

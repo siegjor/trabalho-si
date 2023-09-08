@@ -19,6 +19,10 @@ matriz = [[4, "X", 6],
           [7, 2, 3],
           [1, 8, 5]]
 
+# matriz = [[1, 2, 3],
+#           [5, "X", 6],
+#           [4, 7, 8]]
+
 
 # Não tem solução
 # matriz = [[8, 1, 2],
@@ -70,6 +74,9 @@ while not achou_objetivo:
         tempo_final = time.time()
         print("Sucesso!")
         print(nodo_atual.estado)
+
+        print("Caminho (seq. de movimentos): ")
+        print(nodo_atual.get_sequencia_de_movimentos())
 
         print("Total de nodos visitados: " + str(len(lista_visitados)))
         print("Tempo decorrido: " + str(tempo_final - tempo_inicial) + " segundos")
