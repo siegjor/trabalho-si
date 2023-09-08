@@ -1,7 +1,7 @@
 from nodo import Nodo
 import time
 from lista_ordenada import ListaOrdenada
-from utils import solvable
+from utils import tem_solucao
 
 # Tem solução
 # matriz = [[1, 8, 2],
@@ -35,20 +35,17 @@ matriz = [[4, "X", 6],
 #  [(0, 1), (1, 1), (2, 1)],
 #  [(0, 2), (1, 2), (2, 2)]]
 
+tempo_inicial = time.time()
 
 lista_abertos = ListaOrdenada()
 lista_visitados = []
-
-
-
 
 nodo_origem = Nodo(matriz, None)
 lista_abertos.inserir(nodo_origem)
 
 achou_objetivo = False
 while not achou_objetivo:
-    tempo_inicial = time.time()
-    if not solvable(matriz):
+    if not tem_solucao(matriz):
         print("A configuração fornecida não tem solução!")
         break
 
