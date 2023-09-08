@@ -22,9 +22,6 @@ class Nodo:
                 x = linha.index("X")
                 y = self.estado.index(linha)
 
-                # print("vazio X: " + str(x))
-                # print("vazio Y: " + str(y))
-
                 coords = {"x": x, "y": y}
                 return coords
 

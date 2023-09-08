@@ -33,10 +33,6 @@ class Heuristicas:
         return total
 
     def calcular_conflitos_lineares(self, estado: list):
-
-        # matriz = [[6, 2, 0],
-        #           [4, 5, 3],
-        #           [1, 8, 7]]
         conflitos_lineares = 0
 
         coords_atuais = self.__calcular_coords_estado(estado)

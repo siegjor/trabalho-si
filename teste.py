@@ -32,9 +32,17 @@ def solvable(tiles):
 # matriz = [[1, 8, 2],
 #           ["X", 4, 3],
 #           [7, 6, 5]]
-matriz = [[2, 1, 8],
-          [6, 4, 5],
-          ["X", 3, 7]]
+# matriz = [[2, "X", 8],
+#           [6, 4, 5],
+#           [3, 1, 7]]
+
+matriz = [["X", 2, 4],
+          [8, 5, 3],
+          [1, 6, 7]]
+
+# matriz = [["X", 2, 4],
+#           [8, 5, 3],
+#           [1, 6, 7]]
 
 # matriz = [["X", 2, 4],
 #           [8, 5, 3],
@@ -47,3 +55,6 @@ matriz = [[2, 1, 8],
 heuristicas = Heuristicas()
 conflitos = heuristicas.calcular_conflitos_lineares(matriz) / 2
 print(conflitos)
+
+matriz_em_uma_linha = [0, 2, 4, 8, 5, 3, 1, 6, 7]
+print(solvable(matriz_em_uma_linha))
