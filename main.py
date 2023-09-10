@@ -28,19 +28,19 @@ achou_objetivo = False
 while not achou_objetivo:
     nodo_atual: Nodo = lista_abertos.primeiro()
 
-    print("\n>>> Nodo pai:")
-    nodo_atual.print_estado()
+    # print("\n>>> Nodo pai:")
+    # nodo_atual.print_estado()
 
     novos_nodos: list = nodo_atual.gerar_filhos()
 
     lista_visitados.append(nodo_atual)
     lista_abertos.remover(nodo_atual)
 
-    print(">>> Nodos filhos adicionados:")
+    # print(">>> Nodos filhos adicionados:")
     for nodo in novos_nodos:
         if nodo not in lista_abertos.lista and nodo not in lista_visitados:
             lista_abertos.inserir(nodo)
-            nodo.print_estado()
+            # nodo.print_estado()
 
     achou_objetivo = nodo_atual.esta_completo()
     if achou_objetivo == True:

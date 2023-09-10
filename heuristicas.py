@@ -51,13 +51,13 @@ class Heuristicas:
 
                     if linha_atual == linha_temp and coord_final_atual["x"] == coord_final_temp["x"]:
                         if coluna_temp < coluna_atual and coord_final_atual["y"] < coord_final_temp["y"]:
-                            print("conflito em linha entre " + str(posicao_atual) + " e " + str(posicao_temp))
+                            # print("conflito em linha entre " + str(posicao_atual) + " e " + str(posicao_temp))
                             conflitos_lineares += 1
                             continue
 
                     if coluna_atual == coluna_temp and coord_final_atual["y"] == coord_final_temp["y"] and coluna_atual == coord_final_atual["y"]:
                         if linha_temp < linha_atual and coord_final_atual["x"] < coord_final_temp["x"]:
-                            print("conflito em coluna entre " + str(posicao_atual) + " e " + str(posicao_temp))
+                            # print("conflito em coluna entre " + str(posicao_atual) + " e " + str(posicao_temp))
                             conflitos_lineares += 1
                             continue
 

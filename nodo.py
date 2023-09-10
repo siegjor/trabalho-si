@@ -4,8 +4,8 @@ from heuristicas import Heuristicas
 
 
 class Nodo:
-    __algoritmo = AlgoritmosEnum.HEURISTICA_PRECISA
-    # __algoritmo = AlgoritmosEnum.HEURISTICA_SIMPLES
+    # __algoritmo = AlgoritmosEnum.HEURISTICA_PRECISA
+    __algoritmo = AlgoritmosEnum.HEURISTICA_SIMPLES
     # __algoritmo = AlgoritmosEnum.CUSTO_UNIFORME
 
     def __init__(self, estado: list, pai):
