@@ -1,8 +1,8 @@
-from nodo import Nodo
+from domain.nodo import Nodo
 import time
-from lista_ordenada import ListaOrdenada
-from utils import *
-from interface import Interface
+from utils.lista_ordenada import ListaOrdenada
+from utils.utils import *
+from interface.interface import Interface
 
 
 interface = Interface()

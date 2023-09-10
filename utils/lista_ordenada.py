@@ -1,4 +1,4 @@
-from nodo import Nodo
+from domain.nodo import Nodo
 
 class ListaOrdenada:
     def __init__(self):

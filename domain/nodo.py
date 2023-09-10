@@ -1,6 +1,6 @@
 import copy
-from algoritmos_enum import AlgoritmosEnum
-from heuristicas import Heuristicas
+from utils.algoritmos_enum import AlgoritmosEnum
+from domain.heuristicas import Heuristicas
 
 
 class Nodo:

@@ -1,7 +1,5 @@
 import copy
 
-# Creditos:
-
 def tem_solucao(lista: list):
     index_vazio = lista.index("X")
     lista_copia = copy.deepcopy(lista)
