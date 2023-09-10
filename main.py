@@ -48,45 +48,30 @@ while not achou_objetivo:
         interface.print_resultados(nodo_atual, lista_visitados, lista_abertos, tempo_inicial, tempo_final)
 
 
-# Tem solução
-# matriz = [[1, 8, 2],
-#           ["X", 4, 3],
-#           [7, 6, 5]]
+# Caso fácil:
+# 1 8 2
+# X 4 3
+# 7 6 5
 # Entrada: 1 8 2 X 4 3 7 6 5
 
-# matriz = [[5, 2, 8],
-#           [4, 1, 7],
-#           ["X", 3, 6]]
-# Entrada: 5 2 8 4 1 7 X 3 6
-
-# matriz = [[2, "X", 8],
-#           [6, 4, 5],
-#           [3, 1, 7]]
-# Entrada: 2 X 8 6 4 5 3 1 7
-
-# matriz = [[4, "X", 6],
-#           [7, 2, 3],
-#           [1, 8, 5]]
+# Casos médios:
+# 4 X 6
+# 7 2 3
+# 1 8 5
 # Entrada: 4 X 6 7 2 3 1 8 5
 
-# matriz = [[1, 2, 3],
-#           [5, "X", 6],
-#           [4, 7, 8]]
-# Entrada: 1 2 3 5 X 6 4 7 8
+# 2 X 8
+# 6 4 5
+# 3 1 7
+# Entrada: 2 X 8 6 4 5 3 1 7
 
+# Casos difíceis:
+# 8 6 7
+# 2 5 4
+# 3 X 1
+# Entrada: 8 6 7 2 5 4 3 X 1
 
-# Não tem solução
-# matriz = [[8, 1, 2],
-#           ["X", 4, 3],
-#           [7, 6, 5]]
-# Entrada: 8 1 2 X 4 3 7 6 5
-
-# matriz = [[1, 2, 3],
-#           [4, 5, 6],
-#           ["X", 8, 7]]
-# Entrada: 1 2 3 4 5 6 X 8 7
-
-# matriz = [["X", 2, 4],
-#           [8, 5, 3],
-#           [1, 6, 7]]
-# Entrada: X 2 3 8 5 3 1 6 7
+# 6 4 7
+# 8 5 X
+# 3 2 1
+# Entrada: 6 4 7 8 5 X 3 2 1

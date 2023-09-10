@@ -23,10 +23,7 @@ class Interface:
         print("Tempo decorrido: " + str(tempo_final - tempo_inicial) + " segundos")
         print("Tamanho do caminho (profundidade): " + str(nodo.profundidade))
 
-        # print("\nlista abertos:")
-        # lista_abertos_custos = list(
-        # map(lambda x: x.custo_total, lista_abertos.lista))
-        # print(lista_abertos_custos)
+
 
         # print("lista visitados:")
         # for nodo in lista_visitados:
